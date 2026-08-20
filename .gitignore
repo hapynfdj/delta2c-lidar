@@ -6,9 +6,9 @@ __pycache__/
 # Logs (raw captures — too large for repo; use samples/)
 logs/
 
-# Auto-generated map PNGs (artifact of viewer runs)
-map_*.png
-_render_test.png
+# Auto-generated map PNGs (artifact of viewer runs, root level only)
+/map_*.png
+/_render_test.png
 
 # Legacy/wrong-model tools (LDS01RR XV11 protocol, not DELTA-2C)
 lidar_viewer.py
