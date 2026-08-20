@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs (raw captures — too large for repo; use samples/)
+logs/
+
+# Auto-generated map PNGs (artifact of viewer runs)
+map_*.png
+_render_test.png
+
+# Legacy/wrong-model tools (LDS01RR XV11 protocol, not DELTA-2C)
+lidar_viewer.py
+lidar_gui.pyw
+启动查看器.bat
+调研报告_米家扫地机器人2激光雷达.md
