@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "name": "DELTA-2C Laser Scan",
+  "configById": {
+    "panel-2d": {
+      "type": "2D",
+      "config": {
+        "layers": [
+          {
+            "id": "layer-scan",
+            "type": "LaserScan",
+            "topic": "/scan",
+            "colorMode": "colormap",
+            "colorMap": "jet",
+            "minValue": 0,
+            "maxValue": 12,
+            "view": { "type": "xy", "display": "both", "distance": 12 },
+            "flipX": false,
+            "flipY": false,
+            "useCustomBackgroundColor": false,
+            "backgroundColor": "#000000",
+            "drawOutline": true,
+            "outlineColor": "#ffffff",
+            "opacity": 1,
+            "pointSize": 3
+          }
+        ]
+      }
+    }
+  },
+  "globalVariables": {},
+  "playbackConfig": {}
+}
