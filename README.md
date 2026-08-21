@@ -139,8 +139,8 @@ Windows users can double-click the `启动*.bat` scripts.
   In a room < 6 m this is a sentinel, not a wall.
 - **kaiaai/LDS version check**: the library checks `protocol_version == 0x01` and
   will reject 2C frames (version 0x13). The proposed 2C variant patches this.
-- **VCC must be 5 V**: 3.3 V was observed to degrade one unit's sensitivity
-  (3.2 m near-field blind zone appeared).
+- **VCC must be 5 V**: the logic supply requires 5 V; 3.3 V may cause unreliable
+  operation.
 - **Motor voltage gating**: measurement frames only appear in a ~7–8 Hz window.
   Higher speeds produce only 0xAE frames.
 

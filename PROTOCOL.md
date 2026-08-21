@@ -54,7 +54,8 @@ Each sample is **3 bytes**:
 ```
 
 - `q` = quality / echo intensity (0 = invalid point; discard)
-- `distance_mm = ((d_hi << 8) | d_lo) × 0.5`  (0.5 mm per unit — **2C measured**)
+- `distance_mm ≈ ((d_hi << 8) | d_lo) × 0.5`  (approximately 0.5 mm per unit —
+  empirically determined; subject to calibration verification)
 - `d == 0` with q ≠ 0 → no echo (no return received)
 - `d > 8000 mm` → treat as no echo (saturation artifact; some units emit ~0x3FE0 = 8.17 m for no-return samples)
 
@@ -88,11 +89,10 @@ of bytes before the checksum.
 
 Two types of no-return samples have been observed:
 
-1. **d = 0, q ≠ 0** — clean no-echo (unit 2 and healthy unit 1). The sensor
-   reports quality but zero distance.
-2. **d ≈ 0x3FE0 (16352 units = 8.17 m)** — saturation sentinel (unit 1,
-   degraded hardware). The sensor reports a max-count value when no echo
-   arrives within the measurement window.
+1. **d = 0, q ≠ 0** — clean no-echo. The sensor reports quality but zero distance.
+2. **d ≈ 0x3FE0 (16352 units ≈ 8.17 m)** — possible saturation sentinel on some
+   units. The sensor may report a max-count value when no echo arrives within the
+   measurement window.
 
 The tools in this repository treat both as no-return (d > 8000 mm → set to 0).
 

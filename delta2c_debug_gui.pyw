@@ -23,7 +23,7 @@ DELTA-2C frame formats (verified byte-exact against real captures, 618/618 frame
     AA | len | ver=0x13 | 61 | AD | dlen=7+3N | xx | off(i16) | start_angle(u16)
     | end_angle(u16) | N x [q d_hi d_lo] | chk(u16 BE)
     q = quality (0 = invalid); dist_mm = ((d_hi<<8)|d_lo) * 0.5  (2C 实测 0.5mm/格)
-    d == 0 -> 无回波;  d > 8000mm (1号机无回波饱和 ~0x3FE0 = 8.17m) -> 归零当无回波
+    d == 0 -> 无回波;  d > 8000mm (部分模组无回波饱和 ~0x3FE0 = 8.17m) -> 归零当无回波
     sample k angle = start + (end-start)*(k+0.5)/N ; 16 packets/revolution (measured)
   Checksum = 16-bit sum of every byte before the 2-byte checksum (big-endian).
   Differences vs kaiaai 2A/2B/2D/2G: ver=0x13, extra end_angle field, 采样结构相同
@@ -238,7 +238,7 @@ class DeltaParser:
                         break
                     q = frame[pos]
                     d = ((frame[pos + 1] << 8) | frame[pos + 2]) * 0.5
-                    if d > 8000.0:   # 无回波饱和(1号机 ~0x3FE0=8.17m) -> 按无回波处理
+                    if d > 8000.0:   # 无回波饱和(部分模组 ~0x3FE0=8.17m) -> 按无回波处理
                         d = 0.0
                     pts.append((d, q))
                     pos += 3
