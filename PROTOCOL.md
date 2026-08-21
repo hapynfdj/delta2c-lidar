@@ -109,9 +109,9 @@ The tools in this repository treat both as no-return (d > 8000 mm → set to 0).
 | Packets per rev | 16 | 16 (same) |
 | Checksum | 16-bit sum of preceding bytes | same |
 
-**Important**: The kaiaai C++ library (LDS) and Python library (lds2d) check
-`protocol_version == 0x01` and will **reject 2C frames** (issue #16). To use
-kaiaai's code with the 2C, patch the version check and add the end_angle field.
+**Note**: The kaiaai C++ library (LDS) checks `protocol_version == 0x01` and currently
+rejects 2C frames. The proposed 2C variant in this repository patches the version
+check and adds the end_angle field.
 
 ---
 

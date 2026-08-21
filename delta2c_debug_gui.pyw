@@ -27,8 +27,8 @@ DELTA-2C frame formats (verified byte-exact against real captures, 618/618 frame
     sample k angle = start + (end-start)*(k+0.5)/N ; 16 packets/revolution (measured)
   Checksum = 16-bit sum of every byte before the 2-byte checksum (big-endian).
   Differences vs kaiaai 2A/2B/2D/2G: ver=0x13, extra end_angle field, 采样结构相同
-  ([quality, dist_u16 BE]), 但 2C 比例是 0.5mm/格 而非 kaiaai 的 0.25 —— 2026-08-20
-  双雷达实测 + 手/胸标注日志校准确认; kaiaai 代码对 2C 直接套 0.25 会差一倍。
+  ([quality, dist_u16 BE]), 但 2C 比例是 0.5mm/格 而非 kaiaai 家族的 0.25 —— 2026-08-20
+  双雷达实测 + 手/胸标注日志校准确认; 合并时注意此差异。
 
 Author note: reverse-engineered from user serial captures, 2026-08-20.
 License: MIT
