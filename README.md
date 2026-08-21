@@ -80,6 +80,7 @@ Motor voltage observations (individual units may vary):
 |------|-------------|
 | `LDS_DELTA_2C_115200.h` | Header for the 2C variant (inherits from `LDS` base class) |
 | `LDS_DELTA_2C_115200.cpp` | Implementation: 0xAD frame parsing, PID motor control |
+| `test_2c_parser.py` | Host-side validation: mirrors the C++ parser logic and checks it against real captures (compile the .cpp against the real `LDS.h` to verify API compatibility) |
 
 These files follow the same convention as the other Delta variants in the
 kaiaai/LDS repository. They are the primary contribution for the upstream PR.
